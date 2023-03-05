@@ -1,6 +1,6 @@
 package com.example.commontest.enumlist;
 
-public enum CommissionType {
+public enum CommissionType implements EnumModel {
 
     PERCENT("percent"),
     MONEY("money");
@@ -11,13 +11,17 @@ public enum CommissionType {
         this.value = value;
     }
 
+    @Override
     public String getKey() {
         return name();
     }
 
+    @Override
     public String getValue() {
         return value;
     }
+
+
 
 
 }
