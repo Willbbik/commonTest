@@ -1,8 +1,9 @@
 package com.example.commontest.enumlist;
 
 import com.google.gson.Gson;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,9 +13,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 class EnumListTest {
 
+    @MockBean
+    private EnumMapper enumMapper;
+
+    @BeforeEach
+    void beforeSetup(){
+        enumMapper = new EnumMapper();
+        enumMapper.put("commissionType", CommissionType.class);
+        enumMapper.put("commissionCutting", CommissionCutting.class);
+    }
+
+
     @Test
-    @DisplayName("기본 enum 목록 출력 테스트")
-    void basicEnumList() {
+    void 기본enum목록출력테스트() {
         Map<String, Object> enums = new LinkedHashMap<>();
 
         Class commissionType = CommissionType.class;
@@ -25,13 +36,11 @@ class EnumListTest {
 
         Gson gson = new Gson();
         String result = gson.toJson(enums);
-
         System.out.println(result);
     }
 
     @Test
     void EnumModel타입확인() {
-
         List<EnumModel> enumModelList = new ArrayList<>();
         enumModelList.add(CommissionType.MONEY);
         enumModelList.add(CommissionCutting.CEIL);
@@ -52,7 +61,17 @@ class EnumListTest {
         System.out.println(result);
     }
 
-    private List<EnumValue> toEnumValues(Class<? extends EnumModel> e){
+
+    @Test
+    void enum을List로변환해주는공통모듈의사용결과를출력한다() {
+        Map<String, List<EnumValue>> enumValues = enumMapper.getAll();
+
+        Gson gson = new Gson();
+        String result = gson.toJson(enumValues);
+        System.out.println(result);
+    }
+
+    private List<EnumValue> toEnumValues(Class<? extends EnumModel> e) {
         return Arrays
                 .stream(e.getEnumConstants())
                 .map(EnumValue::new)
