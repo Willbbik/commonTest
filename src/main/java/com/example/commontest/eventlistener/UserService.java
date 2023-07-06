@@ -13,6 +13,7 @@ public class UserService {
     private final ApplicationEventPublisher applicationEventPublisher;
 
     public UserInfo get(final String userId) {
+        log.info("UserService get 함수 시작");
         applicationEventPublisher.publishEvent(new UserEventDto(userId));
 
         UserInfo userInfo = new UserInfo();
