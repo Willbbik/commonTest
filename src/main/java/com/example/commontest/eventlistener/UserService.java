@@ -12,7 +12,7 @@ public class UserService {
 
     private final ApplicationEventPublisher applicationEventPublisher;
 
-    public UserInfo get(final String userId){
+    public UserInfo get(final String userId) {
         applicationEventPublisher.publishEvent(new UserEventDto(userId));
 
         UserInfo userInfo = new UserInfo();

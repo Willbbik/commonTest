@@ -8,10 +8,10 @@ import java.time.LocalDateTime;
 
 @Component
 @Slf4j
-public class UserEventHandler {
+public class UserEventListener {
 
     @EventListener
-    public void process(UserEventDto userEventDto){
+    public void process(UserEventDto userEventDto) {
         log.info("대상자 조회 : {}, 시간 : {}", userEventDto, LocalDateTime.now());
         System.out.println("대상자 조회 : " + userEventDto);
     }
