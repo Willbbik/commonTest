@@ -2,24 +2,20 @@ package com.example.commontest.constructor;
 
 public class Dog {
 
-    private String name;
-    public int age;
+    private String name = "황구";
+    private int age = 1;
 
-    private GENDER gender;
+    private GENDER gender = GENDER.COCK;
 
     public enum GENDER {
         COCK, FEMALE
     }
 
     public Dog() {
-        this.name = "황구";
-        this.age = 1;
-        this.gender = GENDER.COCK;
     }
 
     public Dog(String name) {
         this.name = name;
-        this.age = 1;
     }
 
     public Dog(String name, int age) {
