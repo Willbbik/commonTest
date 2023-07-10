@@ -5,7 +5,7 @@ public class Dog {
     private String name;
     public int age;
 
-    private Dog() {
+    public Dog() {
         this.name = "황구";
         this.age = 1;
     }
