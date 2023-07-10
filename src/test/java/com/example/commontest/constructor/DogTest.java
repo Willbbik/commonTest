@@ -62,5 +62,19 @@ class DogTest {
         assertEquals(result, "황구");
     }
 
+    @Test
+    @DisplayName("private 메소드 호출 테스트")
+    void callPrivateMethod() throws Exception {
 
+        //given
+        Class<Dog> dogClass = (Class<Dog>) Class.forName("com.example.commontest.constructor.Dog");
+
+        //when
+        Method displayDogGender = dogClass.getDeclaredMethod("displayDogGender");
+        displayDogGender.setAccessible(true);
+        Dog.GENDER result = (Dog.GENDER) displayDogGender.invoke(new Dog());
+
+        //then
+        assertEquals(result, Dog.GENDER.COCK);
+    }
 }
