@@ -20,4 +20,12 @@ public class Dog {
         this.age = age;
     }
 
+    public String displayDogName() {
+        return this.name;
+    }
+
+    public int displayDogAge() {
+        return this.age;
+    }
+
 }
