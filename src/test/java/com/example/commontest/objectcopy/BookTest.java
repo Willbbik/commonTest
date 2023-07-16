@@ -1,12 +1,12 @@
 package com.example.commontest.objectcopy;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class BookTest {
 
@@ -16,13 +16,13 @@ class BookTest {
         BookStore originBookStore = new BookStore("북스토어1");
         BookStore copyBookStore = originBookStore;
 
-        assertEquals(originBookStore, copyBookStore);
-        assertEquals(originBookStore.getName(), copyBookStore.getName());
+        Assertions.assertEquals(originBookStore, copyBookStore);
+        Assertions.assertEquals(originBookStore.getName(), copyBookStore.getName());
 
         originBookStore.changeName("북스토어2");
 
-        assertEquals(originBookStore, copyBookStore);
-        assertEquals(originBookStore.getName(), copyBookStore.getName());
+        Assertions.assertEquals(originBookStore, copyBookStore);
+        Assertions.assertEquals(originBookStore.getName(), copyBookStore.getName());
     }
 
     @Test
@@ -37,7 +37,7 @@ class BookTest {
         List<Book> books = new ArrayList<>();
         BookStore bookStore = new BookStore("북스토어", books);
 
-        assertEquals(bookStore.getBooks().size(), 0);
+        Assertions.assertEquals(bookStore.getBooks().size(), 0);
 
         //배열에 book 객체 추가
         Book book1 = new Book("책1");
@@ -45,7 +45,7 @@ class BookTest {
         Book book3 = new Book("책3");
         books.addAll(List.of(book1, book2, book3));
 
-        assertEquals(bookStore.getBooks().size(), 0);
+        Assertions.assertEquals(bookStore.getBooks().size(), 0);
     }
 
     @Test
@@ -61,7 +61,7 @@ class BookTest {
         List<Book> books = new ArrayList<>();
         BookStore bookStore = new BookStore("북스토어", books);
 
-        assertEquals(bookStore.getBooks().size(), 0);
+        Assertions.assertEquals(bookStore.getBooks().size(), 0);
 
         //배열에 book 객체 추가
         Book book1 = new Book("책1");
@@ -104,7 +104,7 @@ class BookTest {
 
         //이름 바꾸기 전
         for(int i=1; i<=newBookStore.getBooks().size(); i++){
-            assertEquals(newBookStore.getBooks().get(i-1).getName(), "책"+i);
+            Assertions.assertEquals(newBookStore.getBooks().get(i-1).getName(), "책"+i);
         }
 
         //이름변경
@@ -112,7 +112,7 @@ class BookTest {
 
         //이름 바꾼 후
         for(int i=1; i<=newBookStore.getBooks().size(); i++){
-            assertNotEquals(newBookStore.getBooks().get(i-1).getName(), "책"+i+"신규");
+            Assertions.assertNotEquals(newBookStore.getBooks().get(i-1).getName(), "책"+i+"신규");
         }
     }
 
