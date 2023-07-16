@@ -7,6 +7,14 @@ import org.springframework.stereotype.Component;
 public class A {
 
     @Autowired
-    private Alphabet alphabet;
+    public Alphabet alphabet;
+
+    public String getAlphabetName(){
+        return alphabet.getName();
+    }
+
+    public void changeAlphabetName(String name){
+        alphabet.changeName(name);
+    }
 
 }

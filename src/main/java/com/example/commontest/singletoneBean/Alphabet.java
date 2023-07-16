@@ -11,7 +11,7 @@ public class Alphabet {
         return name;
     }
 
-    public void setName(String name) {
+    public void changeName(String name) {
         this.name = name;
     }
 }
