@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class BookTest {
 
@@ -84,5 +85,35 @@ class BookTest {
     }
 
 
+    @Test
+    void 깊은복사() {
+        /**
+         * List 및 내부요소의 메모리 주소도 바뀐다.
+         *
+         */
+
+        List<Book> books = new ArrayList<>();
+        NewBookStore newBookStore = new NewBookStore("북스토어", books);
+
+        //배열에 book 객체 추가
+        Book book1 = new Book("책1");
+        Book book2 = new Book("책2");
+        Book book3 = new Book("책3");
+        books.addAll(List.of(book1, book2, book3));
+        newBookStore.changeBooks(books);
+
+        //이름 바꾸기 전
+        for(int i=1; i<=newBookStore.getBooks().size(); i++){
+            assertEquals(newBookStore.getBooks().get(i-1).getName(), "책"+i);
+        }
+
+        //이름변경
+        books.forEach(book -> book.changeName(book.getName() + "신규"));
+
+        //이름 바꾼 후
+        for(int i=1; i<=newBookStore.getBooks().size(); i++){
+            assertNotEquals(newBookStore.getBooks().get(i-1).getName(), "책"+i+"신규");
+        }
+    }
 
 }
