@@ -70,16 +70,16 @@ class BookTest {
         bookStore.changeBooks(books);
 
         //이름 바꾸기 전
-        for(int i=1; i<=books.size(); i++){
-            assertEquals(books.get(i-1).getName(), "책"+i);
+        for(int i=1; i<=bookStore.getBooks().size(); i++){
+            assertEquals(bookStore.getBooks().get(i-1).getName(), "책"+i);
         }
 
         //이름변경
         books.forEach(book -> book.changeName(book.getName() + "신규"));
 
         //이름 바꾼 후
-        for(int i=1; i<=books.size(); i++){
-            assertEquals(books.get(i-1).getName(), "책"+i+"신규");
+        for(int i=1; i<=bookStore.getBooks().size(); i++){
+            assertEquals(bookStore.getBooks().get(i-1).getName(), "책"+i+"신규");
         }
     }
 
