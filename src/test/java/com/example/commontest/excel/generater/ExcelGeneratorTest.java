@@ -95,6 +95,7 @@ class ExcelGeneratorTest {
         //특정 셀에 null이 들어간 경우 다음 셀의 값이 제대로 들어가는지
         Row row = result.getSheetAt(0).getRow(2);
         Assertions.assertTrue(StringUtils.isBlank(row.getCell(0).getStringCellValue()));
+        Assertions.assertEquals(row.getCell(0).getStringCellValue(), "");
         Assertions.assertEquals(row.getCell(1).getStringCellValue(), "testType2");
     }
 

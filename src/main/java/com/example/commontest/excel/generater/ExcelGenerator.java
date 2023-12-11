@@ -62,9 +62,7 @@ public class ExcelGenerator {
     }
 
     private void setCellValue(Cell cell, Object value) {
-       if (value == null) {
-           cell.setCellValue("");
-       } else if (value instanceof String) {
+       if (value instanceof String) {
            cell.setCellValue((String) value);
        } else if (value instanceof Integer) {
            cell.setCellValue((Integer) value);
