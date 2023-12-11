@@ -16,7 +16,7 @@ public class ExcelTestDto {
     private String companyType;
 
     @ExcelColumn(headerName = "법인코드")
-    private String businessNumber;
+    private Integer businessNumber;
 
     @ExcelColumn(headerName = "매니저명")
     private String managerName;
