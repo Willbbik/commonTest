@@ -20,5 +20,13 @@ class StreamIteratorTest {
         });
     }
 
+    @Test
+    public void iteratorForeach(){
+        List<String> originList = List.of("a", "b", "c");
+
+        for(String temp : (Iterable<String>)originList.stream().iterator()){
+            originList.contains(temp);
+        }
+    }
 
 }
